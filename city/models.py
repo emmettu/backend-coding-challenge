@@ -29,30 +29,44 @@ class ScoreCalculator:
     def score_population(self):
         desired_pop = int(self.query["population"])
         city_pop = self.city.population
-        return (1 / (math.log(abs(city_pop - desired_pop) + 1) + 1))
+        return self.normalized_diff(desired_pop, city_pop, City.MAX_POP, City.MIN_POP)
 
     def score_latitude(self):
         desired_lat = float(self.query["latitude"])
         city_lat = self.city.latitude
-        return (1 / (math.log(abs(city_lat - desired_lat) + 1) + 1)) / 4
+        return self.normalized_diff(desired_lat, city_lat, City.MAX_LAT, City.MIN_LAT)
 
     def score_longitude(self):
         desired_lon = float(self.query["longitude"])
         city_lon = self.city.longitude
-        return (1 / (math.log(abs(city_lon - desired_lon) + 1) + 1)) / 4
+        return self.normalized_diff(desired_lon, city_lon, City.MAX_LON, City.MIN_LON)
 
     def score_name(self):
         desired_name = self.query["q"]
         city_name = self.city.name
-        return 2 * SequenceMatcher(None, desired_name, city_name).ratio()
+        return  SequenceMatcher(None, desired_name, city_name).ratio()
 
+    def normalized_diff(self, true, desired, maximum, minimum):
+        adjusted_true = self.normalize(true, maximum, minimum)
+        adjusted_desired = self.normalize(desired, maximum, minimum)
+        diff = abs(adjusted_true - adjusted_desired)
+        return 1 / (1 + diff)
+
+    def normalize(self, value, maximum, minimum):
+        return float(value - minimum) / float(maximum - minimum)
 
 class City(models.Model):
+    MAX_POP = 0
+    MIN_POP = 0
+    MAX_LAT = 0
+    MIN_LAT = 0
+    MAX_LON = 0
+    MIN_LON = 0
+
     name = models.TextField()
     latitude = models.FloatField()
     longitude = models.FloatField()
     population = models.IntegerField()
-    max_pop = 10
 
     def calculate_score(self, query):
         self.score = ScoreCalculator(self, query.copy()).calculate_score()
@@ -67,6 +81,7 @@ class City(models.Model):
             "score": "{0:.1f}".format(self.score)
         }
 
+
 def load_data():
     csv.field_size_limit(sys.maxsize)
     with open("./data/cities_canada-usa.tsv", "r") as f:
@@ -79,6 +94,8 @@ def load_data():
 
         City.objects.bulk_create(cities)
 
+    set_max_min()
+
 
 def build_city(row):
     _, _, name, _, lat, lon, _, _, _, _, _, _, _, _, pop, _, _, _, _ = row
@@ -90,3 +107,13 @@ def build_city(row):
         population=int(pop),
     )
     return city
+
+
+def set_max_min():
+    cities = City.objects.all()
+    City.MAX_LON = cities.latest("longitude").longitude
+    City.MIN_LON = cities.earliest("longitude").longitude
+    City.MAX_LAT = cities.latest("latitude").latitude
+    City.MIN_LAT = cities.earliest("latitude").latitude
+    City.MAX_POP = cities.latest("population").population
+    City.MIN_POP = cities.earliest("population").population
