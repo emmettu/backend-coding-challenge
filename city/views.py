@@ -23,20 +23,17 @@ def suggestions(request):
 
 def get_number_of_results(query):
     try:
-        n = 10 if "n" not in query else int(query["n"])
-        del query["n"]
-        return n
+        return int(query.pop("n")[0]) if "n" in query else 10
     except:
-        raise Exception("Invalid n parameter: " + query["n"])
+        raise Exception("Invalid n parameter")
 
 
 def handle_closeto(query, cities):
     if "closeto" in query:
-        close_city_name = query["closeto"]
-        close_city = City.objects.get(name=close_city_name)
+        close_city_name = query.pop("closeto")[0]
+        close_city = City.objects.filter(name__iexact=close_city_name).first()
         query["longitude"] = close_city.longitude
         query["latitude"] = close_city.latitude
-        del query["closeto"]
         cities.filter(pk=close_city.pk)
 
 def get_top_cities(cities, query):
