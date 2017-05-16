@@ -11,7 +11,10 @@ def suggestions(request):
         cities = City.objects.all()
         n_results = get_number_of_results(query)
 
-        handle_closeto(query, cities)
+
+        if "closeto" in query:
+            close_city = handle_closeto(query, cities)
+            cities = cities.exclude(name=query.pop("closeto")[0])
 
         top_cities = get_top_cities(cities, query)
 
@@ -29,12 +32,11 @@ def get_number_of_results(query):
 
 
 def handle_closeto(query, cities):
-    if "closeto" in query:
-        close_city_name = query.pop("closeto")[0]
-        close_city = City.objects.filter(name__iexact=close_city_name).first()
-        query["longitude"] = close_city.longitude
-        query["latitude"] = close_city.latitude
-        cities.filter(pk=close_city.pk)
+    close_city_name = query["closeto"]
+    close_city = City.objects.filter(name__iexact=close_city_name).first()
+    query["longitude"] = close_city.longitude
+    query["latitude"] = close_city.latitude
+    return cities
 
 def get_top_cities(cities, query):
     return sorted(cities, key=lambda x: x.calculate_score(query), reverse=True)
