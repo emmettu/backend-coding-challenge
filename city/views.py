@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 import sys
 
 from city.models import City
@@ -49,3 +49,7 @@ def build_response(cities, message):
     }
 
     return JsonResponse(response)
+
+
+def home(request):
+    return HttpResponse(render(request, 'city/index.html', {}))

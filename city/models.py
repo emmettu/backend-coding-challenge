@@ -55,6 +55,7 @@ class ScoreCalculator:
     def normalize(self, value, maximum, minimum):
         return float(value - minimum) / float(maximum - minimum)
 
+
 class City(models.Model):
     MAX_POP = 0
     MIN_POP = 0

@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from city.views import suggestions
+from city.views import suggestions, home
 from city.models import set_max_min
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^suggestions/', suggestions),
+    url(r'^$', home),
 ]
 
 set_max_min()
