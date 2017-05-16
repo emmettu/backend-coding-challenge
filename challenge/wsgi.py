@@ -11,11 +11,8 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 from whitenoise.django import DjangoWhiteNoise
-from city.models import set_max_min
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "challenge.settings")
 
 application = get_wsgi_application()
 application = DjangoWhiteNoise(application)
-
-# set_max_min()
