@@ -29,22 +29,22 @@ class ScoreCalculator:
     def score_population(self):
         desired_pop = int(self.query["population"])
         city_pop = self.city.population
-        return 1 / (math.log(abs(city_pop - desired_pop) + 1) + 1)
+        return (1 / (math.log(abs(city_pop - desired_pop) + 1) + 1))
 
     def score_latitude(self):
         desired_lat = float(self.query["latitude"])
         city_lat = self.city.latitude
-        return 1 / (math.log(abs(city_lat - desired_lat) + 1) + 1)
+        return (1 / (math.log(abs(city_lat - desired_lat) + 1) + 1)) / 4
 
     def score_longitude(self):
         desired_lon = float(self.query["longitude"])
         city_lon = self.city.longitude
-        return 1 / (math.sqrt(abs(city_lon - desired_lon)) + 1)
+        return (1 / (math.log(abs(city_lon - desired_lon) + 1) + 1)) / 4
 
     def score_name(self):
         desired_name = self.query["q"]
         city_name = self.city.name
-        return SequenceMatcher(None, desired_name, city_name).ratio()
+        return 2 * SequenceMatcher(None, desired_name, city_name).ratio()
 
 
 class City(models.Model):
@@ -52,16 +52,19 @@ class City(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
     population = models.IntegerField()
+    max_pop = 10
 
     def calculate_score(self, query):
-        return ScoreCalculator(self, query).calculate_score()
+        self.score = ScoreCalculator(self, query.copy()).calculate_score()
+        return self.score
 
     def dictionary(self):
         return {
             "name": self.name,
             "latitude": self.latitude,
             "longitude": self.longitude,
-            "population": self.population
+            "population": self.population,
+            "score": "{0:.1f}".format(self.score)
         }
 
 def load_data():
