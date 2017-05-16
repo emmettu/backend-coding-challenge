@@ -1,5 +1,14 @@
-# Coveo Backend Coding Challenge
+# Coveo Backend Coding Challenge Emmett Underhill
 (inspired by https://github.com/busbud/coding-challenge-backend-c)
+
+## Design Documentation
+Viewable on the [wiki](https://github.com/emmettu/backend-coding-challenge/wiki/Design).
+
+
+## Try it out
+It's live on Heroku:
+
+https://whispering-temple-50475.herokuapp.com/suggestions/?q=Londo&closeto=Toronto&n=3
 
 ## Requirements
 
