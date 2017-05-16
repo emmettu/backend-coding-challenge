@@ -48,7 +48,7 @@ def build_response(cities, message):
         "message": message
     }
 
-    return JsonResponse(response)
+    return JsonResponse(response, json_dumps_params={"indent": 2})
 
 
 def home(request):
