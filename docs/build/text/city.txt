@@ -1,0 +1,258 @@
+city package
+************
+
+
+Subpackages
+===========
+
+* city.migrations package
+
+  * Submodules
+
+  * city.migrations.0001_initial module
+
+  * Module contents
+
+
+Submodules
+==========
+
+
+city.admin module
+=================
+
+
+city.apps module
+================
+
+class city.apps.CityConfig(app_name, app_module)
+
+   Bases: "django.apps.config.AppConfig"
+
+   name = 'city'
+
+
+city.models module
+==================
+
+Classes related to the City model
+
+This module contains the ScoreCalculator and City classes.
+
+class city.models.City(*args, **kwargs)
+
+   Bases: "django.db.models.base.Model"
+
+   Model representation of a city.
+
+   Stores a cities name, latitude, longitude, and population. Stores
+   the maximum and minimum values of these parameters.
+
+   Provides methods for working with cities, such as calculating
+   scores and returning the dictionary representation.
+
+   exception DoesNotExist
+
+      Bases: "django.core.exceptions.ObjectDoesNotExist"
+
+   MAX_LAT = 0
+
+   MAX_LON = 0
+
+   MAX_POP = 0
+
+   MIN_LAT = 0
+
+   MIN_LON = 0
+
+   MIN_POP = 0
+
+   exception MultipleObjectsReturned
+
+      Bases: "django.core.exceptions.MultipleObjectsReturned"
+
+   calculate_score(query)
+
+      Uses ScoreCalculator class to calculate a score given a query
+
+   dictionary()
+
+      Returns the dictionary representation of the city.
+
+   id
+
+      A wrapper for a deferred-loading field. When the value is read
+      from this object the first time, the query is executed.
+
+   latitude
+
+      A wrapper for a deferred-loading field. When the value is read
+      from this object the first time, the query is executed.
+
+   longitude
+
+      A wrapper for a deferred-loading field. When the value is read
+      from this object the first time, the query is executed.
+
+   name
+
+      A wrapper for a deferred-loading field. When the value is read
+      from this object the first time, the query is executed.
+
+   objects = <django.db.models.manager.Manager object>
+
+   population
+
+      A wrapper for a deferred-loading field. When the value is read
+      from this object the first time, the query is executed.
+
+class city.models.ScoreCalculator(city, query)
+
+   Bases: "object"
+
+   Calculates the score between an object and a query
+
+   This class is initialized with a querystring dictionary and a city
+   to be matched against. The calculate_score method determines a
+   score from (0 to 1) based on how closely the city matches the query
+   dictionary
+
+   calculate_score()
+
+      Calculate the (0-1) score of the city agianst the query for each
+      key in the query.
+
+      The score is calculated by looking up the score function for the
+      key in the score map, and running it, adding the result to
+      total_score. total_score is then divided by the number of keys
+      to produce an average score which is then returned.
+
+   normalize(value, maximum, minimum)
+
+      Normalize a given value between 0 and 1 Given a value and the
+      known min and max values, place it between 0 and 1 inclusively.
+
+   normalized_diff(true, desired, maximum, minimum)
+
+      Calculate the difference between two values between 0 and 1.
+
+      Given two values, and their minimums and maximums, normalize the
+      values between 0 and 1 and then take the difference between
+      them. return 1 minus the difference in the values
+
+   score_latitude()
+
+      Normalized diff of the query and city latitudes.
+
+   score_longitude()
+
+      Normalized diff of the query and city longitudes.
+
+   score_name()
+
+      [0-1] difference of the query and city names.
+
+      SequenceMatcher.ratio() is used to generate a [0-1] difference
+      between the 'q' parameter and the city name.
+
+   score_population()
+
+      Normalized diff of the query and city populations.
+
+city.models.build_city(row)
+
+   Given a tsv row, builds the corresponding City object.
+
+city.models.load_data()
+
+   Loads cities_canada-usa.tsv into the database.
+
+city.models.set_max_min()
+
+   Sets the minimum and maximum values for the different query params.
+
+
+city.tests module
+=================
+
+class city.tests.LoadDataTest(methodName='runTest')
+
+   Bases: "django.test.testcases.TestCase"
+
+   test_load_data()
+
+class city.tests.SortTest(methodName='runTest')
+
+   Bases: "django.test.testcases.TestCase"
+
+   assertCity(query, city_name)
+
+   get_cities(query)
+
+   setUp()
+
+   test_closeto()
+
+   test_latitude()
+
+   test_longitude()
+
+   test_message()
+
+   test_multiple()
+
+   test_name()
+
+   test_population()
+
+   test_result_number()
+
+
+city.views module
+=================
+
+Handles the rendering displaying of routes to the user.
+
+city.views.build_response(cities, message)
+
+   Generate the JSON response.
+
+city.views.get_number_of_results(query)
+
+   Determines the number of results to return to the viewer
+
+   Given a query, checks for the 'n' param and returns it if valid,
+   else it returns a default of 10.
+
+city.views.get_top_cities(cities, query)
+
+   Sort top cities by their scores and return them.
+
+city.views.handle_closeto(query, cities)
+
+   Adjust the queries lon and lat values based on the closeto param.
+
+   Given a query and list of cities, finds the closeto city, and sets
+   the lat and lon params of the query to be that of the closeto city.
+   The closeto city is removed from cities to prevent it from showing
+   up in the returned json.
+
+city.views.home(request)
+
+   Render the home page.
+
+city.views.suggestions(request)
+
+   Handles the /suggestion/ route.
+
+   Given a suggestion, gets the query results and loads the City
+   objects into memory.
+
+   Populates the latitude and longitude values with those of the city
+   specified in closeto (if the user provided that param)
+
+   Gets the top cities, and returns the json response.
+
+
+Module contents
+===============

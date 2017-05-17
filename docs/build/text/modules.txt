@@ -1,0 +1,28 @@
+city
+****
+
+* city package
+
+  * Subpackages
+
+    * city.migrations package
+
+      * Submodules
+
+      * city.migrations.0001_initial module
+
+      * Module contents
+
+  * Submodules
+
+  * city.admin module
+
+  * city.apps module
+
+  * city.models module
+
+  * city.tests module
+
+  * city.views module
+
+  * Module contents

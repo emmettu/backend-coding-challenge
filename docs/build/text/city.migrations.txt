@@ -1,0 +1,24 @@
+city.migrations package
+***********************
+
+
+Submodules
+==========
+
+
+city.migrations.0001_initial module
+===================================
+
+class city.migrations.0001_initial.Migration(name, app_label)
+
+   Bases: "django.db.migrations.migration.Migration"
+
+   dependencies = []
+
+   initial = True
+
+   operations = [<CreateModel  name='City', fields=[('id', <django.db.models.fields.AutoField>), ('name', <django.db.models.fields.TextField>), ('latitude', <django.db.models.fields.FloatField>), ('longitude', <django.db.models.fields.FloatField>), ('population', <django.db.models.fields.IntegerField>)]>]
+
+
+Module contents
+===============
