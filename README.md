@@ -4,9 +4,18 @@
 ## Design Documentation
 Viewable on the [wiki](https://github.com/emmettu/backend-coding-challenge/wiki/Design).
 
+## Code Documentation
+
+Generated with Sphinx:
+
+https://raw.githubusercontent.com/emmettu/backend-coding-challenge/master/docs/build/text/city.txt
 
 ## Try it out
 It's live on Heroku:
+
+https://whispering-temple-50475.herokuapp.com/
+
+Example query:
 
 https://whispering-temple-50475.herokuapp.com/suggestions/?q=Londo&closeto=Toronto&n=3
 
