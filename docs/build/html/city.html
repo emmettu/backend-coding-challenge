@@ -1,0 +1,467 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>city package &#8212; coveo-backend-coding-challenge 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="city-package">
+<h1>city package<a class="headerlink" href="#city-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="city.migrations.html">city.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="city.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="city.migrations.html#module-city.migrations.0001_initial">city.migrations.0001_initial module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="city.migrations.html#module-city.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-city.admin">
+<span id="city-admin-module"></span><h2>city.admin module<a class="headerlink" href="#module-city.admin" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-city.apps">
+<span id="city-apps-module"></span><h2>city.apps module<a class="headerlink" href="#module-city.apps" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="city.apps.CityConfig">
+<em class="property">class </em><code class="descclassname">city.apps.</code><code class="descname">CityConfig</code><span class="sig-paren">(</span><em>app_name</em>, <em>app_module</em><span class="sig-paren">)</span><a class="headerlink" href="#city.apps.CityConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="attribute">
+<dt id="city.apps.CityConfig.name">
+<code class="descname">name</code><em class="property"> = 'city'</em><a class="headerlink" href="#city.apps.CityConfig.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-city.models">
+<span id="city-models-module"></span><h2>city.models module<a class="headerlink" href="#module-city.models" title="Permalink to this headline">¶</a></h2>
+<p>Classes related to the City model</p>
+<p>This module contains the ScoreCalculator and City classes.</p>
+<dl class="class">
+<dt id="city.models.City">
+<em class="property">class </em><code class="descclassname">city.models.</code><code class="descname">City</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#city.models.City" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>Model representation of a city.</p>
+<p>Stores a cities name, latitude, longitude, and population.
+Stores the maximum and minimum values of these parameters.</p>
+<p>Provides methods for working with cities, such as calculating
+scores and returning the dictionary representation.</p>
+<dl class="exception">
+<dt id="city.models.City.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#city.models.City.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="city.models.City.MAX_LAT">
+<code class="descname">MAX_LAT</code><em class="property"> = 0</em><a class="headerlink" href="#city.models.City.MAX_LAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="city.models.City.MAX_LON">
+<code class="descname">MAX_LON</code><em class="property"> = 0</em><a class="headerlink" href="#city.models.City.MAX_LON" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="city.models.City.MAX_POP">
+<code class="descname">MAX_POP</code><em class="property"> = 0</em><a class="headerlink" href="#city.models.City.MAX_POP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="city.models.City.MIN_LAT">
+<code class="descname">MIN_LAT</code><em class="property"> = 0</em><a class="headerlink" href="#city.models.City.MIN_LAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="city.models.City.MIN_LON">
+<code class="descname">MIN_LON</code><em class="property"> = 0</em><a class="headerlink" href="#city.models.City.MIN_LON" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="city.models.City.MIN_POP">
+<code class="descname">MIN_POP</code><em class="property"> = 0</em><a class="headerlink" href="#city.models.City.MIN_POP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="city.models.City.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#city.models.City.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="city.models.City.calculate_score">
+<code class="descname">calculate_score</code><span class="sig-paren">(</span><em>query</em><span class="sig-paren">)</span><a class="headerlink" href="#city.models.City.calculate_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses ScoreCalculator class to calculate a score given a query</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="city.models.City.dictionary">
+<code class="descname">dictionary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#city.models.City.dictionary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dictionary representation of the city.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="city.models.City.id">
+<code class="descname">id</code><a class="headerlink" href="#city.models.City.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="city.models.City.latitude">
+<code class="descname">latitude</code><a class="headerlink" href="#city.models.City.latitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="city.models.City.longitude">
+<code class="descname">longitude</code><a class="headerlink" href="#city.models.City.longitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="city.models.City.name">
+<code class="descname">name</code><a class="headerlink" href="#city.models.City.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="city.models.City.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#city.models.City.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="city.models.City.population">
+<code class="descname">population</code><a class="headerlink" href="#city.models.City.population" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="city.models.ScoreCalculator">
+<em class="property">class </em><code class="descclassname">city.models.</code><code class="descname">ScoreCalculator</code><span class="sig-paren">(</span><em>city</em>, <em>query</em><span class="sig-paren">)</span><a class="headerlink" href="#city.models.ScoreCalculator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Calculates the score between an object and a query</p>
+<p>This class is initialized with a querystring dictionary
+and a city to be matched against. The calculate_score method
+determines a score from (0 to 1) based on how closely the
+city matches the query dictionary</p>
+<dl class="method">
+<dt id="city.models.ScoreCalculator.calculate_score">
+<code class="descname">calculate_score</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#city.models.ScoreCalculator.calculate_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the (0-1) score of the city agianst the query
+for each key in the query.</p>
+<p>The score is calculated by looking up the score function for
+the key in the score map, and running it, adding the result to
+total_score. total_score is then divided by the number of keys
+to produce an average score which is then returned.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="city.models.ScoreCalculator.normalize">
+<code class="descname">normalize</code><span class="sig-paren">(</span><em>value</em>, <em>maximum</em>, <em>minimum</em><span class="sig-paren">)</span><a class="headerlink" href="#city.models.ScoreCalculator.normalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalize a given value between 0 and 1
+Given a value and the known min and max values, place it
+between 0 and 1 inclusively.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="city.models.ScoreCalculator.normalized_diff">
+<code class="descname">normalized_diff</code><span class="sig-paren">(</span><em>true</em>, <em>desired</em>, <em>maximum</em>, <em>minimum</em><span class="sig-paren">)</span><a class="headerlink" href="#city.models.ScoreCalculator.normalized_diff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the difference between two values between 0 and 1.</p>
+<p>Given two values, and their minimums and maximums, normalize the
+values between 0 and 1 and then take the difference between them.
+return 1 minus the difference in the values</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="city.models.ScoreCalculator.score_latitude">
+<code class="descname">score_latitude</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#city.models.ScoreCalculator.score_latitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalized diff of the query and city latitudes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="city.models.ScoreCalculator.score_longitude">
+<code class="descname">score_longitude</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#city.models.ScoreCalculator.score_longitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalized diff of the query and city longitudes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="city.models.ScoreCalculator.score_name">
+<code class="descname">score_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#city.models.ScoreCalculator.score_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>[0-1] difference of the query and city names.</p>
+<p>SequenceMatcher.ratio() is used to generate a [0-1] difference
+between the &#8216;q&#8217; parameter and the city name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="city.models.ScoreCalculator.score_population">
+<code class="descname">score_population</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#city.models.ScoreCalculator.score_population" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalized diff of the query and city populations.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="city.models.build_city">
+<code class="descclassname">city.models.</code><code class="descname">build_city</code><span class="sig-paren">(</span><em>row</em><span class="sig-paren">)</span><a class="headerlink" href="#city.models.build_city" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a tsv row, builds the corresponding City object.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="city.models.load_data">
+<code class="descclassname">city.models.</code><code class="descname">load_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#city.models.load_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads cities_canada-usa.tsv into the database.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="city.models.set_max_min">
+<code class="descclassname">city.models.</code><code class="descname">set_max_min</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#city.models.set_max_min" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the minimum and maximum values for the different query params.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-city.tests">
+<span id="city-tests-module"></span><h2>city.tests module<a class="headerlink" href="#module-city.tests" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="city.tests.LoadDataTest">
+<em class="property">class </em><code class="descclassname">city.tests.</code><code class="descname">LoadDataTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#city.tests.LoadDataTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.test.testcases.TestCase</span></code></p>
+<dl class="method">
+<dt id="city.tests.LoadDataTest.test_load_data">
+<code class="descname">test_load_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#city.tests.LoadDataTest.test_load_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="city.tests.SortTest">
+<em class="property">class </em><code class="descclassname">city.tests.</code><code class="descname">SortTest</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="headerlink" href="#city.tests.SortTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.test.testcases.TestCase</span></code></p>
+<dl class="method">
+<dt id="city.tests.SortTest.assertCity">
+<code class="descname">assertCity</code><span class="sig-paren">(</span><em>query</em>, <em>city_name</em><span class="sig-paren">)</span><a class="headerlink" href="#city.tests.SortTest.assertCity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="city.tests.SortTest.get_cities">
+<code class="descname">get_cities</code><span class="sig-paren">(</span><em>query</em><span class="sig-paren">)</span><a class="headerlink" href="#city.tests.SortTest.get_cities" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="city.tests.SortTest.setUp">
+<code class="descname">setUp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#city.tests.SortTest.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="city.tests.SortTest.test_closeto">
+<code class="descname">test_closeto</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#city.tests.SortTest.test_closeto" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="city.tests.SortTest.test_latitude">
+<code class="descname">test_latitude</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#city.tests.SortTest.test_latitude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="city.tests.SortTest.test_longitude">
+<code class="descname">test_longitude</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#city.tests.SortTest.test_longitude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="city.tests.SortTest.test_message">
+<code class="descname">test_message</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#city.tests.SortTest.test_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="city.tests.SortTest.test_multiple">
+<code class="descname">test_multiple</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#city.tests.SortTest.test_multiple" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="city.tests.SortTest.test_name">
+<code class="descname">test_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#city.tests.SortTest.test_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="city.tests.SortTest.test_population">
+<code class="descname">test_population</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#city.tests.SortTest.test_population" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="city.tests.SortTest.test_result_number">
+<code class="descname">test_result_number</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#city.tests.SortTest.test_result_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-city.views">
+<span id="city-views-module"></span><h2>city.views module<a class="headerlink" href="#module-city.views" title="Permalink to this headline">¶</a></h2>
+<p>Handles the rendering displaying of routes to the user.</p>
+<dl class="function">
+<dt id="city.views.build_response">
+<code class="descclassname">city.views.</code><code class="descname">build_response</code><span class="sig-paren">(</span><em>cities</em>, <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#city.views.build_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the JSON response.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="city.views.get_number_of_results">
+<code class="descclassname">city.views.</code><code class="descname">get_number_of_results</code><span class="sig-paren">(</span><em>query</em><span class="sig-paren">)</span><a class="headerlink" href="#city.views.get_number_of_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines the number of results to return to the viewer</p>
+<p>Given a query, checks for the &#8216;n&#8217; param and returns it if
+valid, else it returns a default of 10.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="city.views.get_top_cities">
+<code class="descclassname">city.views.</code><code class="descname">get_top_cities</code><span class="sig-paren">(</span><em>cities</em>, <em>query</em><span class="sig-paren">)</span><a class="headerlink" href="#city.views.get_top_cities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort top cities by their scores and return them.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="city.views.handle_closeto">
+<code class="descclassname">city.views.</code><code class="descname">handle_closeto</code><span class="sig-paren">(</span><em>query</em>, <em>cities</em><span class="sig-paren">)</span><a class="headerlink" href="#city.views.handle_closeto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adjust the queries lon and lat values based on the closeto param.</p>
+<p>Given a query and list of cities, finds the closeto city, and sets
+the lat and lon params of the query to be that of the closeto city.
+The closeto city is removed from cities to prevent it from showing
+up in the returned json.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="city.views.home">
+<code class="descclassname">city.views.</code><code class="descname">home</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#city.views.home" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render the home page.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="city.views.suggestions">
+<code class="descclassname">city.views.</code><code class="descname">suggestions</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#city.views.suggestions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles the /suggestion/ route.</p>
+<p>Given a suggestion, gets the query results and loads the
+City objects into memory.</p>
+<p>Populates the latitude and longitude values with those of
+the city specified in closeto (if the user provided that param)</p>
+<p>Gets the top cities, and returns the json response.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-city">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-city" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">city package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-city.admin">city.admin module</a></li>
+<li><a class="reference internal" href="#module-city.apps">city.apps module</a></li>
+<li><a class="reference internal" href="#module-city.models">city.models module</a></li>
+<li><a class="reference internal" href="#module-city.tests">city.tests module</a></li>
+<li><a class="reference internal" href="#module-city.views">city.views module</a></li>
+<li><a class="reference internal" href="#module-city">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/city.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Emmett Underhill.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/city.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
